@@ -17,25 +17,29 @@ class Plant:
         self.height = height
         self.age_plant = age_plant
 
-    def get_info(self):
-        print(f"{self.name}: {self.height}cm, {self.age} days old")
+    def show(self):
+        print(f"{self.name}: {round(self.height, 1)}cm, {self.age_plant} days old")
 
     def grow(self):
-        pass
+        self.height += 0.8
 
     def age(self):
-        pass
+        self.age_plant += 1
 
 
 def main():
-    print("=== Garden Plant Registry ===")
-    plant1 = Plant("Rose", 25, 30)
-    plant2 = Plant("Sunflower", 80, 45)
-    plant3 = Plant("Cactus", 15, 120)
-
-    plants = [plant1, plant2, plant3]
-    for i in range(3):
-        plants[i].get_info()
+    plant = Plant("Rose", 25.0, 30)
+    first_height = plant.height
+    print("=== Garden Plant Growth ===")
+    plant.show()
+    i = 1
+    while i <= 7:
+        print(f"=== Day {i} ===")
+        plant.age()
+        plant.grow()
+        plant.show()
+        i += 1
+    print(f"Growth this week: {round((plant.height - first_height), 1)}cm")
 
 
 if __name__ == "__main__":
