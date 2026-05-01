@@ -18,7 +18,8 @@ class Plant:
         self.age_plant = age_plant
 
     def show(self):
-        print(f"{self.name}: {round(self.height, 1)}cm, {self.age_plant} days old")
+        print(f"{self.name}: {round(self.height, 1)}cm, \
+{self.age_plant} days old")
 
     def grow(self):
         self.height += 0.8
