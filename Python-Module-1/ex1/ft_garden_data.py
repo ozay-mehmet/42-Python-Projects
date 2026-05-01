@@ -17,7 +17,7 @@ class Plant:
         self.height = height
         self.age = age
 
-    def write(self):
+    def show(self):
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
@@ -28,8 +28,8 @@ def main():
     plant3 = Plant("Cactus", 15, 120)
 
     plants = [plant1, plant2, plant3]
-    for i in range(3):
-        plants[i].write()
+    for i in plants:
+        i.show()
 
 
 if __name__ == "__main__":
