@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/02 13:29:16 by mozay           #+#    #+#               #
-#  Updated: 2026/05/03 13:44:16 by mozay           ###   ########.fr        #
+#  Updated: 2026/05/03 13:54:19 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -120,9 +120,6 @@ class Vegetable(Plant):
     def age(self):
         super().age()
         self.nutritional_value += 1
-
-    def grow(self):
-        super().grow()
 
 
 def main():
