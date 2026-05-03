@@ -7,16 +7,16 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/01 18:32:06 by mozay           #+#    #+#               #
-#  Updated: 2026/05/02 13:38:21 by mozay           ###   ########.fr        #
+#  Updated: 2026/05/03 12:21:41 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class Plant:
     name: str
-    height: int
+    height: float
     age_plant: int
 
-    def __init__(self, name: str, height: int, age_plant: int):
+    def __init__(self, name: str, height: float, age_plant: int):
         self.name = name
         self.height = height
         self.age_plant = age_plant
