@@ -7,18 +7,18 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/02 13:29:16 by mozay           #+#    #+#               #
-#  Updated: 2026/05/02 17:25:38 by mozay           ###   ########.fr        #
+#  Updated: 2026/05/03 13:44:16 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class Plant:
     _name: str
-    _height: int
+    _height: float
     _age_plant: int
 
-    def __init__(self, name: str, height: int, age_plant: int) -> None:
+    def __init__(self, name: str, height: float, age_plant: int) -> None:
         self._name = name
-        if (height < 0):
+        if (height < 0.0):
             print(f"{self._name}: Error, height can't be negative")
             print("Height update rejected")
         else:
@@ -45,7 +45,7 @@ class Plant:
             self._age_plant = changed
             print(f"Age updated: {self._age_plant} days")
 
-    def get_height(self) -> int:
+    def get_height(self) -> float:
         return self._height
 
     def get_age(self) -> int:
@@ -66,18 +66,18 @@ class Flower(Plant):
     def __init__(self, name, height, age_plant, color):
         super().__init__(name, height, age_plant)
         self.color = color
-        self.ability = True
+        self.bloom_ability = False
 
     def show(self) -> None:
         super().show()
         print(f" Color: {self.color}")
 
     def bloom(self) -> None:
-        if not (self.ability):
+        if (self.bloom_ability):
             print(f" {self._name} is blooming beautifully!")
         else:
             print(f" {self._name} has not bloomed yet")
-            self.ability = False
+            self.bloom_ability = True
 
 
 class Tree(Plant):
