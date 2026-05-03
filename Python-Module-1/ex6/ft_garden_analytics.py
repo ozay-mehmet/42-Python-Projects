@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/02 13:29:16 by mozay           #+#    #+#               #
-#  Updated: 2026/05/03 11:20:44 by mozay           ###   ########.fr        #
+#  Updated: 2026/05/03 14:21:02 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -69,18 +69,18 @@ class Flower(Plant):
     def __init__(self, name, height, age_plant, color):
         super().__init__(name, height, age_plant)
         self.color = color
-        self._bloomed = False
+        self.bloom_ability = False
 
-    def show(self):
+    def bloom(self) -> None:
+        self.bloom_ability = True
+
+    def show(self) -> None:
         super().show()
         print(f" Color: {self.color}")
-        if self._bloomed:
+        if self.bloom_ability:
             print(f" {self._name} is blooming beautifully!")
         else:
             print(f" {self._name} has not bloomed yet")
-
-    def bloom(self):
-        self._bloomed = True
 
 
 class Tree(Plant):
@@ -135,15 +135,18 @@ def main():
     print("=== Check year-old")
     print(Plant.isOlder(30))
     print(Plant.isOlder(400))
+
     print("\n=== Flower")
     rose = Flower("Rose", 15.0, 10, "red")
     rose.show()
+    rose.bloom()
     showStatus(rose)
     print("[asking the rose to grow and bloom]")
     rose.grow()
-    rose.bloom()
     rose.show()
+    rose.bloom()
     showStatus(rose)
+
     print("\n=== Tree")
     oak = Tree("Oak", 200.0, 365, 5.0)
     oak.show()
@@ -151,15 +154,17 @@ def main():
     print("[asking the oak to produce shade]")
     oak.produce_shade()
     showStatus(oak)
+
     print("\n=== Seed")
     sunflower = Seed("Sunflower", 80.0, 45)
     sunflower.show()
     print("[make sunflower grow, age and bloom]")
     sunflower.grow()
-    sunflower.age()
     sunflower.bloom()
+    sunflower.age()
     sunflower.show()
     showStatus(sunflower)
+
     print("\n=== Anonymous")
     unknown = Plant.anonymous()
     unknown.show()
