@@ -13,10 +13,10 @@
 
 class Plant:
     name: str
-    height: int
+    height: float
     age_plant: int
 
-    def __init__(self, name: str, height: int, age_plant: int):
+    def __init__(self, name: str, height: float, age_plant: int):
         self.name = name
         self.height = height
         self.age_plant = age_plant
