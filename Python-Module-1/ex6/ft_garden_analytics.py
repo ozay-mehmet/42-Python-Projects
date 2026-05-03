@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/02 13:29:16 by mozay           #+#    #+#               #
-#  Updated: 2026/05/03 11:17:05 by mozay           ###   ########.fr        #
+#  Updated: 2026/05/03 11:20:44 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -111,11 +111,11 @@ class Seed(Flower):
     def bloom(self):
         super().bloom()
         self._seeds = 42
-    
+
     def grow(self):
         self._height += 30.0
         self._stats.inc_grow()
-    
+
     def age(self):
         self._age_plant += 20
         self._stats.inc_age()
