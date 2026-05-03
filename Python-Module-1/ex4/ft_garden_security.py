@@ -7,23 +7,23 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/05/01 18:21:53 by mozay           #+#    #+#               #
-#  Updated: 2026/05/02 13:37:18 by mozay           ###   ########.fr        #
+#  Updated: 2026/05/03 12:37:23 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class Plant:
     _name: str
-    _height: int
+    _height: float
     _age_plant: int
 
-    def __init__(self, name: str, height: int, age_plant: int) -> None:
+    def __init__(self, name: str, height: float, age_plant: int) -> None:
         self._name = name
-        if (self._height < 0):
+        if (height < 0.0):
             print(f"{self._name}: Error, height can't be negative")
             print("Height update rejected")
         else:
             self._height = height
-        if (self._age_plant < 0):
+        if (age_plant < 0):
             print(f"{self._name}: Error, age can't be negative")
             print("Age update rejected\n")
         else:
@@ -49,7 +49,7 @@ class Plant:
             self._age_plant = changed
             print(f"Age updated: {self._age_plant} days\n")
 
-    def get_height(self) -> int:
+    def get_height(self) -> float:
         return self._height
 
     def get_age(self) -> int:
@@ -64,8 +64,8 @@ def main():
     rose.set_age(30)
     rose.set_height(-45)
     rose.set_age(-45)
-    print(f"Current state: {rose._name}: {rose._height}cm, \
-{rose._age_plant} days old")
+    print(f"Current state: {rose._name}: {rose.get_height()}cm, \
+{rose.get_age()} days old")
 
 
 if __name__ == "__main__":
