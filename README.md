@@ -9,14 +9,14 @@ Projeler, fonksiyonel programlama yaklaşımından başlayarak nesne yönelimli 
 ## 📂 Proje Yapısı
 
 Repository, farklı seviyelere ayrılmış modüllerden oluşur:
-
+```bash
 42-Python-Projects/
 │
 ├── Python-Module-0/
 ├── Python-Module-1/
 └── Python-Module-2/
 └── ...
-
+```
 Her klasör, belirli bir programlama konseptine odaklanır.
 
 ---
