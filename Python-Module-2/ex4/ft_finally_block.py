@@ -7,12 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/05 14:53:24 by mozay           #+#    #+#               #
-#  Updated: 2026/07/05 17:44:31 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/05 17:50:35 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class PlantError(Exception):
-    def __init__(self, plant_name : str) -> None:
+    def __init__(self, plant_name: str) -> None:
         super().__init__(plant_name)
 
 

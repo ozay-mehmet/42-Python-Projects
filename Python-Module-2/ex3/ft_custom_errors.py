@@ -7,12 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/05 14:01:54 by mozay           #+#    #+#               #
-#  Updated: 2026/07/05 17:50:07 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/05 17:50:40 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class GardenError(Exception):
-    def __init__(self, err:str = "Unknown garden error") -> None:
+    def __init__(self, err: str = "Unknown garden error") -> None:
         super().__init__(err)
 
 
