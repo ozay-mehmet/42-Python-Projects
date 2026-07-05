@@ -7,11 +7,11 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/05 11:44:02 by mozay           #+#    #+#               #
-#  Updated: 2026/07/05 14:00:07 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/05 17:23:46 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def garden_operations(operation_number) -> None:
+def garden_operations(operation_number: int) -> None:
     if operation_number == 0:
         int("abc")
     elif operation_number == 1:

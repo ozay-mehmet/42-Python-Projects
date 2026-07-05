@@ -7,22 +7,22 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/05 14:01:54 by mozay           #+#    #+#               #
-#  Updated: 2026/07/05 14:52:07 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/05 17:45:26 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class GardenError(Exception):
-    def __init__(self, err="Unknown garden error"):
+    def __init__(self, err :str = "Unknown garden error") -> None:
         super().__init__(err)
 
 
 class PlantError(GardenError):
-    def __init__(self, err="Unknown plant error"):
+    def __init__(self, err: str = "Unknown plant error") -> None:
         super().__init__(err)
 
 
 class WaterError(GardenError):
-    def __init__(self, err="Unknown water error"):
+    def __init__(self, err: str = "Unknown water error") -> None:
         super().__init__(err)
 
 

@@ -7,16 +7,16 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/05 14:53:24 by mozay           #+#    #+#               #
-#  Updated: 2026/07/05 15:24:25 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/05 17:44:31 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 class PlantError(Exception):
-    def __init__(self, plant_name):
+    def __init__(self, plant_name : str) -> None:
         super().__init__(plant_name)
 
 
-def water_plant(plant_name) -> None:
+def water_plant(plant_name: str) -> None:
     if plant_name == plant_name.capitalize():
         print(f"Watering {plant_name}: [OK]")
     else:
