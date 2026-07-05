@@ -14,17 +14,18 @@
 def input_temperature(temp_str: str) -> int:
     value = int(temp_str)
     if (value < 0):
-        raise Exception(f"{value}°C is too cold for plants (min 0°C)")
+        raise Exception(f"{temp_str}°C is too cold for plants (min 0°C)")
     elif (value > 40):
-        raise Exception(f"{value}°C is too hot for plants (max 40°C)")
+        raise Exception(f"{temp_str}°C is too hot for plants (max 40°C)")
     return value
 
 
 def display(temperature: str) -> None:
     print(f"\nInput data is '{temperature}'")
     try:
-        temperature = input_temperature(temperature)
-        print(f"Temperature is now {temperature}°C")
+        new_temp = int(temperature)
+        new_temp = input_temperature(temperature)
+        print(f"Temperature is now {new_temp}°C")
     except Exception as exception:
         print(f"Caught input_temperature error: {exception}")
 
