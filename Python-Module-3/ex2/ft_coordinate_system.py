@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/06 19:13:42 by mozay           #+#    #+#               #
-#  Updated: 2026/07/06 20:02:43 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/07 16:20:41 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -43,7 +43,7 @@ def calculate_distance(
 ) -> float:
     x1, y1, z1 = coordinate_1
     x2, y2, z2 = coordinate_2
-    return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2 + (z2 - z1)**2)
 
 
 def main() -> None:
