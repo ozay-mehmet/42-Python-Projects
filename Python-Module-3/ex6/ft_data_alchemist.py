@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/08 19:06:09 by mozay           #+#    #+#               #
-#  Updated: 2026/07/08 19:35:35 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/08 19:44:47 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -57,7 +57,7 @@ def main() -> None:
 
     average, high_scores = calculate_high_score(scores)
 
-    print(f"Score dict: {scores}")
+    print(f"\nScore dict: {scores}")
     print(f"Score average is {average:.2f}")
     print(f"High scores: {high_scores}")
 
