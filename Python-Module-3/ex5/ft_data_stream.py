@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/08 15:29:41 by mozay           #+#    #+#               #
-#  Updated: 2026/07/08 16:37:44 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/08 19:53:41 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -16,9 +16,9 @@ import random
 
 
 def gen_event() -> typing.Generator[tuple[str, str], None, None]:
-    players: str = ["alice", "bob", "charlie", "dylan"]
-    actions: str = ["run", "eat", "sleep", "grab", "move", "climb", "swim",
-                    "release", "use"]
+    players: list[str] = ["alice", "bob", "charlie", "dylan"]
+    actions: list[str] = ["run", "eat", "sleep", "grab", 
+                          "move", "climb", "swim", "release", "use"]
     while True:
         player = players[random.randint(0, len(players) - 1)]
         action = actions[random.randint(0, len(actions) - 1)]
