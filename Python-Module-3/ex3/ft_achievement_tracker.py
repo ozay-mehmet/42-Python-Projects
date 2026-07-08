@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/07 16:16:54 by mozay           #+#    #+#               #
-#  Updated: 2026/07/08 13:49:52 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/08 19:52:23 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -26,7 +26,7 @@ def gen_player_achievements() -> set[str]:
 
 
 def get_all_achievements(players: dict[str, set[str]]) -> set[str]:
-    all_achievements: set = set()
+    all_achievements: set[str] = set()
     for player in players:
         all_achievements = all_achievements.union(players[player])
     return all_achievements
@@ -44,7 +44,7 @@ def get_common_achievements(players: dict[str, set[str]]) -> set[str]:
         else:
             common_achievements = common_achievements.intersection(
                 players[player])
-        return common_achievements
+    return common_achievements
 
 
 def get_unique_achievements(player_name: str,
