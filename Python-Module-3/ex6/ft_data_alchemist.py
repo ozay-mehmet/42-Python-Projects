@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/08 19:06:09 by mozay           #+#    #+#               #
-#  Updated: 2026/07/09 14:51:16 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/09 15:54:35 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -27,7 +27,7 @@ def generate_score(players: list[str]) -> dict[str, int]:
 
 
 def calculate_high_score(
-        scores: dict[str, int]) -> tuple[float, dict[str, int]]:                 
+        scores: dict[str, int]) -> tuple[float, dict[str, int]]:
     average = sum(scores.values()) / len(scores)
     high_scores = {
         player: score
