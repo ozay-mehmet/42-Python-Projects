@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/08 13:51:55 by mozay           #+#    #+#               #
-#  Updated: 2026/07/08 15:25:45 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/10 11:23:03 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -31,7 +31,7 @@ def parse_inventory(args: list[str]) -> dict[str, int]:
         try:
             value = int(quantity)
         except ValueError as v:
-            print(f"Quantity error for {item}: {v}")
+            print(f"Quantity error for '{item}': {v}")
             continue
         inventory.update({item: value})
 
