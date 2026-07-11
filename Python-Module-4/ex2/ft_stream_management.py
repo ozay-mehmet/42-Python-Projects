@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/11 17:28:26 by mozay           #+#    #+#               #
-#  Updated: 2026/07/11 17:44:27 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/11 18:10:15 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -42,7 +42,9 @@ def read_file(filename: str) -> None:
         print(new_content, end="")
         print("\n\n---")
 
-        new_filename = input("Enter a new file name (or empty): ")
+        print("Enter a new file name (or empty): ", end="")
+        sys.stdout.flush()
+        new_filename = sys.stdin.readline().rstrip("\n")
 
         if new_filename == "":
             print("Not saving data.")
@@ -53,9 +55,12 @@ def read_file(filename: str) -> None:
             new_file.close()
             print(f"Data saved in file '{new_filename}'.")
     except PermissionError as e:
-        print(f"Error opening file '{filename}': {e}")
+        print(f"[STDERR] Error opening file '{filename}': \
+[Errno {e.errno}] {e.strerror}: '{new_filename}'")
+        print("Data not saved.")
     except FileNotFoundError as file_not_found:
-        print(f"Error opening file '{filename}': {file_not_found}")
+        print(f"[STDERR] Error opening file '{filename}': \
+[Errno {file_not_found.errno}] {file_not_found.strerror}: '{filename}'")
 
 
 def main() -> None:
