@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/11 18:11:57 by mozay           #+#    #+#               #
-#  Updated: 2026/07/11 19:18:58 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/12 11:24:00 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -34,7 +34,7 @@ def main() -> None:
     print(secure_archive("/etc/shadow"))
     print("\nUsing 'secure_archive' to read from a regular file:")
     success, data = secure_archive("ancient_fragment.txt")
-    print(success, data)
+    print((success, data))
     print("\nUsing 'secure_archive' to write previous content to a new file:")
     print(secure_archive("new_fragment.txt", "write", data))
 
