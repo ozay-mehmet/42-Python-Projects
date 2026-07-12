@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/10 19:24:23 by mozay           #+#    #+#               #
-#  Updated: 2026/07/11 12:56:28 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/12 13:21:10 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -19,7 +19,7 @@ def read_file(filename: str) -> None:
     print(f"Accessing file '{filename}'")
 
     try:
-        file: typing.IO = open(filename, "r")
+        file: typing.IO[str] = open(filename, "r")
         print("---\n")
         print(file.read(), end="\n\n")
         print("---")

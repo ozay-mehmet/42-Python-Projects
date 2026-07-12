@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/11 17:28:26 by mozay           #+#    #+#               #
-#  Updated: 2026/07/11 18:10:15 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/12 13:21:46 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -19,7 +19,7 @@ def read_file(filename: str) -> None:
     print(f"Accessing file '{filename}'")
 
     try:
-        file: typing.IO = open(filename, "r")
+        file: typing.IO[str] = open(filename, "r")
         print("---\n")
         content = file.read()
         print(content, end="")
@@ -50,7 +50,7 @@ def read_file(filename: str) -> None:
             print("Not saving data.")
         else:
             print(f"Saving data to '{new_filename}'")
-            new_file: typing.IO = open(new_filename, "w")
+            new_file: typing.IO[str] = open(new_filename, "w")
             new_file.write(new_content)
             new_file.close()
             print(f"Data saved in file '{new_filename}'.")

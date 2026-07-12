@@ -7,11 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/11 18:11:57 by mozay           #+#    #+#               #
-#  Updated: 2026/07/12 11:24:00 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/12 13:24:04 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def secure_archive(filename: str, mode="read", content="") -> tuple[bool, str]:
+def secure_archive(filename: str, mode: str = "read",
+                   content: str = "") -> tuple[bool, str]:
     try:
         if mode == "read":
             with open(filename, "r") as file:
