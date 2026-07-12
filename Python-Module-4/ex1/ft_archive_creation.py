@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/11 13:10:28 by mozay           #+#    #+#               #
-#  Updated: 2026/07/12 13:22:11 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/12 13:28:24 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -50,6 +50,7 @@ def read_file(filename: str) -> None:
             print(f"Saving data to '{new_filename}'")
             new_file: typing.IO[str] = open(new_filename, "w")
             new_file.write(new_content)
+            new_file.write("\n")
             new_file.close()
             print(f"Data saved in file '{new_filename}'.")
     except Exception as e:
