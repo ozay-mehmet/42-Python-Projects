@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/14 19:17:39 by mozay           #+#    #+#               #
-#  Updated: 2026/07/14 20:01:11 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/15 12:43:49 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -32,10 +32,7 @@ class DataProcessor(abc.ABC):
         if not self._storage:
             raise IndexError("No data available")
 
-        value = self._storage.pop(0)
-        rank = self._rank
-        self._rank += 1
-        return rank, value
+        return self._rank, self._storage.pop(0)
 
 
 class NumericProcessor(DataProcessor):
@@ -49,7 +46,7 @@ class NumericProcessor(DataProcessor):
             for item in data:
                 if not isinstance(item, (int, float)):
                     return False
-                return True
+            return True
         return False
 
     def ingest(self, data: int | float | list[int] |
@@ -57,10 +54,11 @@ class NumericProcessor(DataProcessor):
         if not self.validate(data):
             raise ValueError("Improper numeric data")
         if isinstance(data, list):
-            for value in data:
-                self._storage.append(str(value))
+            self._storage.extend(str(x) for x in data)
+            self._rank += len(data)
         else:
             self._storage.append(str(data))
+            self._rank += 1
 
 
 class TextProcessor(DataProcessor):
@@ -68,22 +66,24 @@ class TextProcessor(DataProcessor):
         super().__init__()
 
     def validate(self, data: typing.Any) -> bool:
-        if isinstance(data, (int, float)):
-            return False
+        if isinstance(data, str):
+            return True
         if isinstance(data, list):
             for item in data:
-                if not isinstance(item, (int, float)):
-                    return True
-                return False
-        return True
+                if not isinstance(item, str):
+                    return False
+                return True
+        return False
 
     def ingest(self, data: list[str]) -> None:
         if not self.validate(data):
             raise ValueError("Improper text data")
         if isinstance(data, list):
             self._storage.extend(data)
+            self._rank += len(data)
         else:
-            self._storage.extend(data)
+            self._storage.append(data)
+            self._rank += 1
 
 
 class LogProcessor(DataProcessor):
@@ -120,23 +120,42 @@ class LogProcessor(DataProcessor):
             logs = [data]
         for log in logs:
             self._storage.append(f"{log['log_level']}: {log['log_message']}")
+        self._rank += len(logs)
 
 
 class DataStream:
     def __init__(self) -> None:
-        self.processor: list[DataProcessor] = []
+        self.processors: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
-        self.processor.append(proc)
+        self.processors.append(proc)
 
     def process_stream(self, stream: list[typing.Any]) -> None:
-        pass
+        for value in stream:
+            processed = False
+            for proc in self.processors:
+                try:
+                    proc.ingest(value)
+                    processed = True
+                except ValueError:
+                    pass
+            if not processed:
+                print("DataStream error - Cant process element"
+                      " in stream", value)
 
     def print_processors_stats(self) -> None:
         print("== DataStream statistics ==")
-        if not self.processor:
+        if not self.processors:
             print("No processor found, no data")
             return
+        else:
+            for proc in self.processors:
+                cls: type = type(proc)
+                print(
+                    f"{cls.__name__.replace('Processor', ' Processor')}: "
+                    f"total {proc._rank} items processed, "
+                    f"remaining {len(proc._storage)} on processor"
+                )
 
 
 def main() -> None:
@@ -155,6 +174,23 @@ def main() -> None:
         42, ['Hi', 'five']]
     print("Send first batch of data on stream:", (batch_of_data))
     data_stream.process_stream(batch_of_data)
+    data_stream.print_processors_stats()
+    print("\nRegistering other data processors")
+    text = TextProcessor()
+    log = LogProcessor()
+    data_stream.register_processor(text)
+    data_stream.register_processor(log)
+    print("Send the same batch again")
+    data_stream.process_stream(batch_of_data)
+    data_stream.print_processors_stats()
+    print("\nConsume some elements from the data processors:"
+          " Numeric 3, Text 2, Log 1")
+    for _ in range(3):
+        numeric.output()
+    for _ in range(2):
+        text.output()
+    log.output()
+    data_stream.print_processors_stats()
 
 
 if __name__ == "__main__":
