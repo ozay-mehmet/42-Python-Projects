@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/14 14:55:20 by mozay           #+#    #+#               #
-#  Updated: 2026/07/14 19:15:25 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/15 13:08:56 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -31,11 +31,9 @@ class DataProcessor(abc.ABC):
     def output(self) -> tuple[int, str]:
         if not self._storage:
             raise IndexError("No data available")
-
-        value = self._storage.pop(0)
         rank = self._rank
         self._rank += 1
-        return rank, value
+        return rank, self._storage.pop(0)
 
 
 class NumericProcessor(DataProcessor):
@@ -68,14 +66,14 @@ class TextProcessor(DataProcessor):
         super().__init__()
 
     def validate(self, data: typing.Any) -> bool:
-        if isinstance(data, (int, float)):
-            return False
+        if isinstance(data, str):
+            return True
         if isinstance(data, list):
             for item in data:
-                if not isinstance(item, (int, float)):
-                    return True
-                return False
-        return True
+                if not isinstance(item, str):
+                    return False
+                return True
+        return False
 
     def ingest(self, data: list[str]) -> None:
         if not self.validate(data):
@@ -83,7 +81,7 @@ class TextProcessor(DataProcessor):
         if isinstance(data, list):
             self._storage.extend(data)
         else:
-            self._storage.extend(data)
+            self._storage.append(data)
 
 
 class LogProcessor(DataProcessor):
