@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/14 14:55:20 by mozay           #+#    #+#               #
-#  Updated: 2026/07/15 13:08:56 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/16 13:52:24 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -147,7 +147,7 @@ def main() -> None:
     print(f" Text value {rank}: {value}")
     print("\nTesting Log Processor...")
     log = LogProcessor()
-    print(" Trying to validate input '42'", log.validate(42))
+    print(" Trying to validate input 'Hello'", log.validate("Hello"))
     print(" Processing data: [{'log_level': 'NOTICE', 'log_message': "
           "'Connection to server'}, {'log_level': 'ERROR', 'log_message': "
           "'Unauthorized access!!'}]")
