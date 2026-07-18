@@ -7,14 +7,11 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/17 19:49:19 by mozay           #+#    #+#               #
-#  Updated: 2026/07/17 19:52:18 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/18 12:03:39 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-def light_spell_allowed_ingredients() -> list[str]:
-    return ["earth", "air", "fire", "water"]
+from .light_spellbook import light_spell_record
+from .dark_spellbook import dark_spell_record
 
-
-def light_spell_record(spell_name: str, ingredients: str) -> str:
-    from grimoire import light_validator
-    
+__all__ = ["light_spell_record", "dark_spell_record"]
