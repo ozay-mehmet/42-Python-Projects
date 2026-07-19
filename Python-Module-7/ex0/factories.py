@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/19 13:32:17 by mozay           #+#    #+#               #
-#  Updated: 2026/07/19 15:34:40 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/19 16:49:35 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -17,7 +17,7 @@ from .creatures import Flameling, Aquabub, Pyrodon, Torragon
 
 
 class CreatureFactory(abc.ABC):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
     @abc.abstractmethod
@@ -30,7 +30,7 @@ class CreatureFactory(abc.ABC):
 
 
 class FlameFactory(CreatureFactory):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
     def create_base(self) -> Creature:
@@ -41,7 +41,7 @@ class FlameFactory(CreatureFactory):
 
 
 class AquaFactory(CreatureFactory):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
     def create_base(self) -> Creature:
