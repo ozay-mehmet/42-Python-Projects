@@ -41,6 +41,7 @@ def tournament(opponents: list[tuple[CreatureFactory,
                 strategy2.act(creature2)
             except StrategyError as s:
                 print("Battle error, aborting tournament: ", s)
+                return
 
 
 def main() -> None:
