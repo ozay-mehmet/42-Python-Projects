@@ -12,7 +12,7 @@
 # ************************************************************************* #
 
 from .strategy import BattleStrategy
-from ex0 import creature
+from ex0.creature import Creature
 from ex1.capabiliity import TransformCapability, HealCapability
 
 
@@ -24,43 +24,48 @@ class NormalStrategy(BattleStrategy):
     def __init__(self) -> None:
         super().__init__()
 
-    def is_valid(self, creature: creature.Creature) -> bool:
-        return hasattr(creature, "Attack")
+    def is_valid(self, creature: Creature) -> bool:
+        return hasattr(creature, "attack")
 
-    def act(self, creature: creature.Creature) -> None:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise StrategyError(f"Invalid Creature '{creature.name}'\
-                                for this normal strategy")
-        creature.attack()
+            raise StrategyError(
+                f"Invalid Creature '{creature.name}'\
+ for this normal strategy")
+        print(creature.attack())
 
 
 class AggressiveStrategy(BattleStrategy):
     def __init__(self) -> None:
         super().__init__()
 
-    def is_valid(self, creature: creature.Creature) -> bool:
+    def is_valid(self, creature: Creature) -> bool:
         return (hasattr(creature, "transform")
                 and hasattr(creature, "revert"))
 
-    def act(self, creature: creature.Creature) -> None:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise StrategyError(f"Invalid Creature '{creature.name}'\
-                                for this aggressive strategy")
-        TransformCapability.transform()
-        creature.attack()
-        TransformCapability.revert()
+            raise StrategyError(
+                f"Invalid Creature '{creature.name}'\
+ for this aggressive strategy")
+        if isinstance(creature, TransformCapability):
+            print(creature.transform())
+            print(creature.attack())
+            print(creature.revert())
 
 
 class DefensiveStrategy(BattleStrategy):
     def __init__(self) -> None:
         super().__init__()
 
-    def is_valid(self, creature: creature.Creature) -> bool:
+    def is_valid(self, creature: Creature) -> bool:
         return hasattr(creature, "heal")
 
-    def act(self, creature: creature.Creature) -> None:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
-            raise StrategyError(f"Invalid Creature '{creature.name}'\
-                                for this defensive strategy")
-        creature.attack()
-        HealCapability.heal()
+            raise StrategyError(
+                f"Invalid Creature '{creature.name}'\
+ for this defensive strategy")
+        if isinstance(creature, HealCapability):
+            print(creature.attack())
+            print(creature.heal())
