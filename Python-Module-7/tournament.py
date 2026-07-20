@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/19 18:15:32 by mozay           #+#    #+#               #
-#  Updated: 2026/07/20 12:45:30 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/20 13:01:14 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -40,7 +40,7 @@ def tournament(opponents: list[tuple[CreatureFactory,
                 strategy1.act(creature1)
                 strategy2.act(creature2)
             except StrategyError as s:
-                print("Battle error, aborting tournament: ", s)
+                print("Battle error, aborting tournament:", s)
                 return
 
 
