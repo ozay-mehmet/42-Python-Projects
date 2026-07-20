@@ -7,12 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/19 18:15:32 by mozay           #+#    #+#               #
-#  Updated: 2026/07/19 19:44:07 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/20 12:45:30 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 from ex2 import NormalStrategy, AggressiveStrategy, DefensiveStrategy
-from ex1 import HealingCreatureFactory, TransformingCreatureFactory
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
 from ex0 import FlameFactory, AquaFactory, CreatureFactory
 from ex2 import BattleStrategy, StrategyError
 
@@ -58,7 +58,7 @@ def main() -> None:
     tournament([(flame, aggressive), (heal, defensive)])
     print("\nTournament 2 (multiple)")
     print(" [ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
-    transform = TransformingCreatureFactory()
+    transform = TransformCreatureFactory()
     aqua = AquaFactory()
     tournament([(aqua, normal), (heal, defensive), (transform, aggressive)])
 

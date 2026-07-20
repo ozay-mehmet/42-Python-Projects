@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/19 16:28:44 by mozay           #+#    #+#               #
-#  Updated: 2026/07/19 18:11:58 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/20 12:45:00 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -88,7 +88,7 @@ class Morphagon(creature.Creature, TransformCapability):
         return f"{self.name} stabilizes its form."
 
 
-class TransformingCreatureFactory(factories.CreatureFactory):
+class TransformCreatureFactory(factories.CreatureFactory):
     def __init__(self) -> None:
         super().__init__()
 
