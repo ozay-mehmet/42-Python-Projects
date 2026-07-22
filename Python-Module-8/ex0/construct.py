@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/21 12:17:12 by mozay           #+#    #+#               #
-#  Updated: 2026/07/21 19:38:56 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/22 18:48:21 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -32,7 +32,8 @@ def main() -> None:
         print("\nMATRIX STATUS: Welcome to the construct")
         print("\nCurrent Python:", sys.executable)
         print("Virtual Environment:", os.path.basename(p=sys.prefix))
-        print("Environment Path:", os.path.dirname(p=sys.executable))
+        print("Environment Path:", os.path.dirname(
+            os.path.dirname(p=sys.executable)))
         print("\nSUCCESS: You're in an isolated environment!")
         print("Safe to install packages without affecting")
         print("the global system.")
