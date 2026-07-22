@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/21 19:40:14 by mozay           #+#    #+#               #
-#  Updated: 2026/07/22 14:56:12 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/22 18:30:50 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -17,38 +17,50 @@ from importlib.metadata import version
 
 
 def load_dependencies() -> dict[str, object | None]:
-    modules: dict[str, object | None] = {}
-    for name in ["pandas", "numpy", "matplotlib"]:
+    packages: dict[str, object | None] = {}
+
+    for package in ["numpy", "pandas", "matplotlib"]:
         try:
-            if name == "matplotlib":
-                modules[name] = importlib.import_module("matplotlib.pyplot")
+            if package == "matplotlib":
+                packages[package] = importlib.import_module(
+                    "matplotlib.pyplot"
+                )
             else:
-                modules[name] = importlib.import_module(name)
+                packages[package] = importlib.import_module(package)
+
         except ImportError:
-            modules[name] = None
-    return modules
+            packages[package] = None
+
+    return packages
 
 
-def check_dependencies(modules: dict[str, object | None]) -> None:
+def check_dependencies(packages: dict[str, object | None]) -> None:
+    print("\nLOADING STATUS: Loading programs...\n")
+
     missing: list[str] = []
-    print("LOADING STATUS: Loading programs...")
+
     print("Checking dependencies:")
 
-    packages = [
-        ("pandas", "Data manipulation ready"),
-        ("numpy", "Numerical computation ready"),
-        ("matplotlib", "Visualization ready")
-    ]
+    descriptions: dict[str, str] = {
+        "pandas": "Data manipulation ready",
+        "numpy": "Numerical computation ready",
+        "matplotlib": "Visualization ready"
+    }
 
-    for pkg, desc in packages:
-        if modules.get(pkg) is None:
-            missing.append(pkg)
+    for package in descriptions:
+        if packages.get(package) is None:
+            missing.append(package)
+
         else:
             try:
-                pkg_version = version(pkg)
-                print(f"[OK] {pkg} ({pkg_version}) - {desc}")
+                print(
+                    f"[OK] {package} "
+                    f"({version(package)}) - "
+                    f"{descriptions[package]}"
+                )
+
             except Exception:
-                missing.append(pkg)
+                missing.append(package)
 
     if missing:
         print("\nMissing Dependencies")
@@ -56,39 +68,60 @@ def check_dependencies(modules: dict[str, object | None]) -> None:
             print(f"- {package}")
         print("\nInstall with pip:")
         print("pip install -r requirements.txt")
-        print("\nOr with Poetry:")
+
+        print("\nInstall with Poetry:")
         print("poetry install")
         sys.exit(1)
 
 
-def analyze_matrix_data(np: numpy, pd: pandas) -> object:
+def analyze_matrix_data() -> object:
     print("\nAnalyzing Matrix data...")
-    matrix_data = np.random.normal(loc=50, scale=10, size=1000)
-    print(f"Processing {len(matrix_data)} data points...")
-    df = pd.DataFrame({"Energy": matrix_data})
-    return df
+
+    import numpy as np
+    import pandas as pd
+
+    matrix = np.random.normal(
+        loc=50,
+        scale=10,
+        size=1000
+    )
+
+    print(f"Processing {len(matrix)} data points...")
+
+    return pd.DataFrame(
+        {
+            "Energy": matrix
+        }
+    )
 
 
-def generate_visualization(df: pandas.DataFrame,
-                           plt: matplotlib.pyplot) -> None:
-    print("Generating visualization...\n")
+def generate_visualization(data: object) -> None:
+    print("Generating visualization...")
+
+    import matplotlib.pyplot as plt
+
     plt.figure(figsize=(8, 5))
-    plt.hist(df["Energy"], bins=30)
+
     plt.title("Matrix Energy")
     plt.xlabel("Energy")
     plt.ylabel("Frequency")
-    plt.savefig("matrix_analysis.png")
+
+    plt.savefig(
+        "matrix_analysis.png"
+    )
+
     plt.close()
-    print("Analysis complete!")
+
+    print("\nAnalysis complete!")
     print("Results saved to: matrix_analysis.png")
 
 
 def main() -> None:
-    modules = load_dependencies()
-    check_dependencies(modules)
+    packages = load_dependencies()
+    check_dependencies(packages)
 
-    df = analyze_matrix_data(modules["numpy"], modules["pandas"])
-    generate_visualization(df, modules["matplotlib"])
+    data = analyze_matrix_data()
+    generate_visualization(data)
 
 
 if __name__ == "__main__":
