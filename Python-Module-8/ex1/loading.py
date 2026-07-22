@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/21 19:40:14 by mozay           #+#    #+#               #
-#  Updated: 2026/07/22 18:30:50 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/22 18:52:34 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -80,34 +80,39 @@ def analyze_matrix_data() -> object:
     import numpy as np
     import pandas as pd
 
-    matrix = np.random.normal(
-        loc=50,
-        scale=10,
-        size=1000
-    )
+    matrix = np.random.normal(loc=50, scale=10, size=1000)
 
     print(f"Processing {len(matrix)} data points...")
 
-    return pd.DataFrame(
-        {
-            "Energy": matrix
-        }
-    )
+    return pd.DataFrame({"Energy": matrix})
 
 
 def generate_visualization(data: object) -> None:
     print("Generating visualization...")
 
     import matplotlib.pyplot as plt
+    import pandas as pd
+
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("Expected pandas DataFrame")
 
     plt.figure(figsize=(8, 5))
 
-    plt.title("Matrix Energy")
+    plt.hist(
+        data["Energy"],
+        bins=30,
+        color="blue",
+        edgecolor="black"
+    )
+
+    plt.title("Matrix Energy Distribution")
     plt.xlabel("Energy")
     plt.ylabel("Frequency")
+    plt.tight_layout()
 
     plt.savefig(
-        "matrix_analysis.png"
+        "matrix_analysis.png",
+        dpi=300
     )
 
     plt.close()
