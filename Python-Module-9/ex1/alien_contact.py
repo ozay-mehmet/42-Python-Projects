@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/26 11:50:04 by mozay           #+#    #+#               #
-#  Updated: 2026/07/26 16:09:32 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/26 19:00:28 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -65,7 +65,7 @@ def true_state() -> None:
             witness_count=5,
             message_received="'Greetings from Zeta Reticuli'"
         )
-        print("Valid station created:")
+        print("Valid contact report:")
         print(f"ID: {alien.contact_id}\nType: {alien.contact_type.value}\n\
 Location: {alien.location}\nSignal: {alien.signal_strength}/10\n\
 Duration: {alien.duration_minutes} minutes\nWitnesses: {alien.witness_count}\n\
@@ -88,7 +88,7 @@ def false_state() -> None:
             witness_count=2,
             message_received="'Greetings from Zeta Reticuli'"
         )
-        print("Valid station created:")
+        print("Valid contact report:")
         print(f"ID: {alien.contact_id}\nType: {alien.contact_type.value}\n\
 Location: {alien.location}\nSignal: {alien.signal_strength}/10\n\
 Duration: {alien.duration_minutes} minutes\nWitnesses: {alien.witness_count}\n\
