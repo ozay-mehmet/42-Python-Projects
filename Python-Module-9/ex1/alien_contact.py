@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/26 11:50:04 by mozay           #+#    #+#               #
-#  Updated: 2026/07/26 14:09:22 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/26 16:09:32 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -41,7 +41,10 @@ class AlienContact(BaseModel):
             raise ValueError("Contact ID must start with 'AC' (Alien Contact)")
         if self.contact_type == ContactType.physical and not self.is_verified:
             raise ValueError("Physical contact reports must be verified")
-        if self.contact_type == ContactType.telephatic and not self.witness_count >= 3:
+        if (
+            self.contact_type == ContactType.telephatic
+            and self.witness_count < 3
+        ):
             raise ValueError("Telepathic contact requires "
                              "at least 3 witnesses")
         if not self.signal_strength > 7.0 and self.message_received != "":
