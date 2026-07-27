@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/26 11:50:04 by mozay           #+#    #+#               #
-#  Updated: 2026/07/26 19:00:28 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/27 12:53:46 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -21,7 +21,7 @@ class ContactType(Enum):
     radio = "radio"
     visual = "visual"
     physical = "physical"
-    telephatic = "telephatic"
+    telepathic = "telepathic"
 
 
 class AlienContact(BaseModel):
@@ -32,7 +32,7 @@ class AlienContact(BaseModel):
     signal_strength: float = Field(ge=0.0, le=10.0)
     duration_minutes: int = Field(ge=1, le=1440)
     witness_count: int = Field(ge=1, le=100)
-    message_received: Optional[str] = Field(max_length=500)
+    message_received: Optional[str] = Field(default=None, max_length=500)
     is_verified: bool = Field(default=False)
 
     @model_validator(mode="after")
@@ -42,12 +42,12 @@ class AlienContact(BaseModel):
         if self.contact_type == ContactType.physical and not self.is_verified:
             raise ValueError("Physical contact reports must be verified")
         if (
-            self.contact_type == ContactType.telephatic
+            self.contact_type == ContactType.telepathic
             and self.witness_count < 3
         ):
             raise ValueError("Telepathic contact requires "
                              "at least 3 witnesses")
-        if not self.signal_strength > 7.0 and self.message_received != "":
+        if self.signal_strength > 7.0 and not self.message_received:
             raise ValueError("Strong signals (> 7.0) "
                              "should include received messages")
         return self
@@ -82,7 +82,7 @@ def false_state() -> None:
             contact_id="AC_2024_001",
             timestamp=datetime.now(),
             location="Area 51, Nevada",
-            contact_type=ContactType.telephatic,
+            contact_type=ContactType.telepathic,
             signal_strength=8.5,
             duration_minutes=45,
             witness_count=2,
@@ -103,7 +103,7 @@ def main() -> None:
     print("Alien Contact Log Validation")
     print("======================================")
     true_state()
-    print("\n======================================")
+    print("========================================")
     false_state()
 
 
