@@ -7,7 +7,7 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/07/26 14:13:01 by mozay           #+#    #+#               #
-#  Updated: 2026/07/26 16:02:57 by mozay           ###   ########.fr        #
+#  Updated: 2026/07/27 12:54:11 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
@@ -53,14 +53,15 @@ class SpaceMission(BaseModel):
             raise ValueError("Mission ID must start with 'M'")
         ranks = [members.rank for members in self.crew]
         if (not (Rank.commander in ranks)) and (not (Rank.captain in ranks)):
-            raise ValueError("Must have at least one Commander or Captain")
+            raise ValueError(
+                "Mission must have at least one Commander or Captain")
         if self.duration_days > 365:
             experienced = [
                 members for members in self.crew
                 if members.years_experience >= 5
             ]
             if (len(experienced) < len(self.crew) / 2):
-                raise ValueError(" Long missions (> 365 days) need 50% "
+                raise ValueError("Long missions (> 365 days) need 50% "
                                  "experienced crew (5+ years)")
         for member in self.crew:
             if not member.is_active:
@@ -114,7 +115,7 @@ Crew members:")
     except ValidationError as e:
         print("Expected validation error:")
         for msg in e.errors():
-            print("Mission", msg['msg'][13:])
+            print(msg['msg'][13:])
 
 
 def false_state() -> None:
@@ -163,7 +164,7 @@ Crew members:")
     except ValidationError as e:
         print("Expected validation error:")
         for msg in e.errors():
-            print("Mission", msg['msg'][13:])
+            print(msg['msg'][13:])
 
 
 def main() -> None:
