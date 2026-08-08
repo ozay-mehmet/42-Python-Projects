@@ -7,11 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/08/06 16:51:58 by mozay           #+#    #+#               #
-#  Updated: 2026/08/07 18:37:15 by mozay           ###   ########.fr        #
+#  Updated: 2026/08/08 19:37:01 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-from typing import Callable, Any
+from typing import Any
+from collections.abc import Callable
 from functools import reduce, partial, lru_cache, singledispatch
 from operator import add, mul
 

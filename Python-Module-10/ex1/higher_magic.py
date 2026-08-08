@@ -7,11 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/08/06 12:10:40 by mozay           #+#    #+#               #
-#  Updated: 2026/08/06 15:01:18 by mozay           ###   ########.fr        #
+#  Updated: 2026/08/08 19:36:45 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-from typing import Callable, Any
+from typing import Any
+from collections.abc import Callable
 
 
 def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:

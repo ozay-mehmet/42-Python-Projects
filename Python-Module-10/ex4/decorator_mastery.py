@@ -7,11 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/08/07 18:42:25 by mozay           #+#    #+#               #
-#  Updated: 2026/08/08 19:33:59 by mozay           ###   ########.fr        #
+#  Updated: 2026/08/08 19:36:24 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-from typing import Callable, Any
+from typing import Any
+from collections.abc import Callable
 from functools import wraps
 from time import time, sleep
 

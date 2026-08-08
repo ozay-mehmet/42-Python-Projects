@@ -7,11 +7,12 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/08/06 15:03:04 by mozay           #+#    #+#               #
-#  Updated: 2026/08/06 16:50:36 by mozay           ###   ########.fr        #
+#  Updated: 2026/08/08 19:36:54 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-from typing import Callable, Any
+from typing import Any
+from collections.abc import Callable
 
 
 def mage_counter() -> Callable:
