@@ -53,21 +53,21 @@ def memoized_fibonacci(n: int) -> int:
 
 def spell_dispatcher() -> Callable[[Any], str]:
     @singledispatch
-    def unknown(_: Any) -> str:
+    def base(_: Any) -> str:
         return "Unknown spell type"
 
-    @unknown.register
+    @base.register
     def damage(dmg: int) -> str:
         return f"Damage spell: {dmg} damage"
 
-    @unknown.register
+    @base.register
     def enchantment(ench: str) -> str:
         return f"Enchantment: {ench}"
 
-    @unknown.register(list)
+    @base.register(list)
     def multi_cast(spells: list) -> str:
         return f"Multi-cast: {len(spells)} spells"
-    return unknown
+    return base
 
 
 def main() -> None:
