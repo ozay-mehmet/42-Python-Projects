@@ -7,11 +7,11 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/08/07 18:42:25 by mozay           #+#    #+#               #
-#  Updated: 2026/08/08 17:27:13 by mozay           ###   ########.fr        #
+#  Updated: 2026/08/08 19:33:59 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-from typing import Callable
+from typing import Callable, Any
 from functools import wraps
 from time import time, sleep
 
@@ -32,7 +32,8 @@ def spell_timer(func: Callable) -> Callable:
 def power_validator(min_power: int) -> Callable:
     def decorator_factory(func: Callable) -> Callable:
         @wraps(func)
-        def check_power(self, spell_name, power):
+        def check_power(self: Any, spell_name: str,
+                        power: int) -> str | Callable:
             if power < min_power:
                 return "Insufficient power for this spell"
             return func(self, spell_name, power)
@@ -57,7 +58,7 @@ def retry_spell(max_attempts: int) -> Callable:
 
 
 class MageGuild:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     @staticmethod
