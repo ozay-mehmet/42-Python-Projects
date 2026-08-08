@@ -7,13 +7,13 @@
 #  By: mozay <mozay@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/08/07 18:42:25 by mozay           #+#    #+#               #
-#  Updated: 2026/08/08 16:31:22 by mozay           ###   ########.fr        #
+#  Updated: 2026/08/08 17:27:13 by mozay           ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
 from typing import Callable
 from functools import wraps
-from time import time
+from time import time, sleep
 
 
 def spell_timer(func: Callable) -> Callable:
@@ -21,6 +21,7 @@ def spell_timer(func: Callable) -> Callable:
     def timer() -> str:
         print("Casting", func.__name__ + "...")
         start = time()
+        sleep(1)
         func_wrap = func()
         end = time()
         print(f"Spell completed in {end - start:.3f} seconds")
